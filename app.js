@@ -71,6 +71,8 @@ VideoIntervalSelector.prototype.init = function() {
     this.element.appendChild(this.timer);
   }
 
+  this.playSeekerOnly = !!this.options.timeInterval;
+
   this.video.load();
 
   this.video.addEventListener('loadeddata', function() {
@@ -88,8 +90,8 @@ VideoIntervalSelector.prototype.init = function() {
 };
 VideoIntervalSelector.prototype.bindEvents = function() {
   // Canvas events.
-  this.canvas.addEventListener('click', this.playPause.bind(this, this.video, !!this.options.timeInterval));
-  this.canvas.addEventListener('touchend', this.playPause.bind(this, this.video, !!this.options.timeInterval));
+  this.canvas.addEventListener('click', this.playPause.bind(this, this.video));
+  this.canvas.addEventListener('touchend', this.playPause.bind(this, this.video));
 
   // Timeline events.
   if (!this.options.timeInterval) {
@@ -162,8 +164,7 @@ VideoIntervalSelector.prototype.stop = function(video) {
   if (this.playSeekerOnly) return video.currentTime = this.getSeekerDurationStart();
   return video.currentTime = 0;
 };
-VideoIntervalSelector.prototype.playPause = function(video, seekerOnly) {
-  this.playSeekerOnly = seekerOnly;
+VideoIntervalSelector.prototype.playPause = function(video) {
   if (this.playing) return this.pause(video);
   return this.play(video);
 };
@@ -174,8 +175,6 @@ VideoIntervalSelector.prototype.seekTo = function(event) {
   } else {
     offset = event.clientX - this.getOffset(this.timeline).left;
   }
-
-
 
   var percentage = offset / this.timeline.offsetWidth;
   this.video.currentTime = this.video.duration * percentage;
@@ -346,7 +345,7 @@ VideoIntervalSelector.prototype.seekerDragStop = function(element, event) {
 
 VideoIntervalSelector.prototype.keyboardUpdateSeeker = function(event) {
   var seekerOffset, step = 1;
-  if (event.keyCode === 32) return this.playPause(this.video, !!this.options.timeInterval);
+  if (event.keyCode === 32) return this.playPause(this.video);
   if (event.keyCode === 37 && this.seeker.offsetLeft - step > 0) seekerOffset = this.seeker.offsetLeft - step;
   if (event.keyCode === 39 && this.seeker.offsetLeft + step < this.timeline.clientWidth) seekerOffset = this.seeker.offsetLeft + step;
   if (!seekerOffset) return;
