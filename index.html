@@ -18,16 +18,19 @@
     }
 
     #VideoIntervalSelector-timeline {
-      border: 1px solid #D2D2D2;
       background: #DCDCDC;
       position: relative;
     }
-    #VideoIntervalSelector-timeline-indicator { background: #DCDCDC; }
+    #VideoIntervalSelector-timeline-indicator {
+      background: #DCDCDC;
+      transition: width 250ms ease;
+    }
     #VideoIntervalSelector-timeline-seeker {
       background: #E0BCBC;
       cursor: move;
       position: absolute;
       top:0;
+      transition: width 250ms ease;
     }
       #VideoIntervalSelector-timeline-seeker:before {
         background: #D21818;
@@ -35,6 +38,7 @@
         -webkit-border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
         border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
         bottom: -53px;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.3);
         -webkit-box-sizing: content-box;
         -moz-box-sizing: content-box;
         box-sizing: content-box;

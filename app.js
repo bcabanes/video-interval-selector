@@ -131,7 +131,7 @@ VideoIntervalSelector.prototype.drawFrame = function(video, context, width, heig
   context.drawImage(video, 0, 0, width, height);
 };
 VideoIntervalSelector.prototype.updateTimeline = function(currentTime, duration) {
-  var percentage = (currentTime * 100 / duration).toFixed(4);
+  var percentage = (currentTime * 100 / duration).toFixed(2);
   this.timeline.firstChild.style.width = percentage + '%';
 };
 VideoIntervalSelector.prototype.updateTimer = function(currentTime, duration) {
