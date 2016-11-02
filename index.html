@@ -1,0 +1,139 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width">
+  <title>Video interval selector</title>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
+        type="text/css" >
+
+  <style>
+    * { box-sizing: border-box; }
+    #VideoIntervalSelector-canvas-container { position: relative; }
+
+    #VideoIntervalSelector-canvas { cursor: pointer; }
+
+    #VideoIntervalSelector-timeline, #VideoIntervalSelector-timeline-indicator,
+    #VideoIntervalSelector-timeline-seeker, #VideoIntervalSelector-timeline-seeker-indicator { height: 20px; }
+
+    #VideoIntervalSelector-timeline {
+      border: 1px solid #D2D2D2;
+      background: #DCDCDC;
+      position: relative;
+    }
+    #VideoIntervalSelector-timeline-indicator { background: #DCDCDC; }
+    #VideoIntervalSelector-timeline-seeker {
+      background: #E0BCBC;
+      cursor: move;
+      position: absolute;
+      top:0;
+    }
+      #VideoIntervalSelector-timeline-seeker:before {
+        background: #D21818;
+        border: none;
+        -webkit-border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+        border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+        bottom: -53px;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        content: "";
+        height: 45px;
+        left: -20px;
+        position: absolute;
+        -o-text-overflow: clip;
+        text-overflow: clip;
+        -webkit-transform: rotateZ(-45deg);
+        transform: rotateZ(-45deg);
+        width: 45px;
+      }
+      #VideoIntervalSelector-timeline-seeker:after {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 50px;
+        width: 15px;
+        height: 2px;
+        box-shadow:
+          0 0.25em 0 0 #FFFFFF,
+          0 0.5em 0 0 #FFFFFF;
+      }
+        #VideoIntervalSelector-timeline-seeker-indicator {
+          background: #D21818;
+          position: absolute;
+        }
+
+    #VideoIntervalSelector-play-button,
+    #VideoIntervalSelector-pause-button {
+      font-size: 0;
+      pointer-events: none; /* This let the click pass through the div. */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    #VideoIntervalSelector-play-button {
+      border-bottom: 16px solid transparent;
+      border-left: 24px solid #FFFFFF;
+      border-top: 16px solid transparent;
+      height: 32px;
+      width: 24px;
+    }
+    #VideoIntervalSelector-pause-button {
+      border-left: 8px solid #FFFFFF;
+      border-right: 8px solid #FFFFFF;
+      height: 32px;
+      width: 24px;
+    }
+    #VideoIntervalSelector-timer {
+      margin: 2px 0;
+      font-family: monospace;
+    }
+
+    /* MISCELLANEOUS */
+    html {
+      color: #333333;
+      font-weight: 300;
+      font-size: 1rem;
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+    }
+    .container { width: 960px; }
+    #video-interval-selector {
+      margin: 25px auto;
+      display: inline-block;
+    }
+    .misc { margin: 35px 0; }
+    button, input[type=file] {
+      margin: 10px 15px;
+      padding: 10px 15px;
+      background: #FFFFFF;
+      border: 1px solid #333333;
+      border-radius: 5px;
+      color: #333333;
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.5;
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      cursor: pointer;
+      -webkit-appearance: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row center-xs">
+      <div class="col-xs-12">
+        <div id="video-interval-selector"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 misc"></div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
