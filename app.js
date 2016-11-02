@@ -244,6 +244,7 @@ VideoIntervalSelector.prototype.createCanvasContainer = function(width) {
 VideoIntervalSelector.prototype.createCanvas = function(width, height) {
   var canvas = document.createElement('canvas');
   canvas.id = this.prefix + '-canvas';
+  canvas.setAttribute('moz-opaque', '');
   if (width && height) {
     canvas.width = width;
     canvas.height = height;
