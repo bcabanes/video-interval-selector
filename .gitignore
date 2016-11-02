@@ -1,0 +1,29 @@
+# IntelliJ project files
+.idea
+*.iml
+
+# NPM
+npm-debug.log
+
+# Node modules
+node_modules
+
+# Typescript
+typings
+/src/typings/tsd/
+/tsd_typings/
+
+# Configuration
+/src/app/firebase.conf.ts
+
+# Tests
+coverage
+
+# Build files
+dist
+
+# OS generated files #
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
