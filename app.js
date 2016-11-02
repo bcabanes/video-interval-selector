@@ -409,12 +409,14 @@ VideoIntervalSelector.prototype.destroy = function() {
   // timeInterval: 0 });
   var frameSelector;
   var logContainer = document.createElement('div').appendChild(document.createElement('pre'));
+  logContainer.style.display = 'none';
 
   // Get data button.
   var getDataButton = document.createElement('button');
   getDataButton.innerHTML = 'Get data';
   getDataButton.addEventListener('click', function() {
-    logContainer.innerHTML = JSON.stringify(frameSelector.getData());
+    logContainer.style.display = 'block';
+    logContainer.innerHTML = JSON.stringify(frameSelector.getData(), null, ' ');
   });
 
   document.getElementsByClassName('misc')[0].appendChild(getDataButton);
